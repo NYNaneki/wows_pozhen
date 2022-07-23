@@ -2,29 +2,44 @@ import javax.swing.*;
 import java.util.Scanner;
 
 //7*7棋盘
-/*class warship {
-    int[] loc;
-    Integer ishorizontal=0;
-    void set{
-        loc[0]=(int)(Math.random()*7);
-        loc[1]=(int)(Math.random()*7);
+class warship {
+    int[] loc=new int[2];       //0是x坐标 1是y坐标
+    Integer ishorizontal;   //是否竖着，与前进后退方向有关
+    void set(){
+        loc[0]=3;
+        loc[1]=3;
+        ishorizontal=0;
+        System.out.println("settled!");
     }
-    void move{
-    for(Integer i=0;i<=1;i++) {
+    void move(){
         if(loc[ishorizontal]+1<=7&&loc[ishorizontal]-1>=0){
-
-        }
+        int num=(int) (Math.random()*2);
+        System.out.println(num);
+        switch (num){
+            case 1:
+        loc[ishorizontal]++;
+        break;
+            case 0:
+        loc[ishorizontal]--;
+        break;}
+        System.out.println("moved!");
     }
     }
-    void turn{
+    void getloc(){
+        System.out.println(loc[0]+" "+loc[1]);
+    }
+    void turn(){
+        if(ishorizontal==1)
+            ishorizontal=0;
+        if(ishorizontal==0)
+            ishorizontal=1;
+        System.out.println("turned!");
+    }
 
-        }
-
-
-}*/
+}
 class map{
-    void draw(){for(Integer i=0;i<7;i++){
-        for(Integer j=0;j<7;j++){
+    void draw(){for(int i=0;i<7;i++){
+        for(int j=0;j<7;j++){
             System.out.print("□");
 
         }
@@ -39,6 +54,12 @@ public class Main {
 //System.out.println(a);
        // map Map=new map();
         //Map.draw();
-
+    warship w=new warship();
+    w.set();
+    w.getloc();
+    w.move();
+    w.getloc();
+    w.loc[0]++;
+    w.getloc();
     }
 }
