@@ -4,7 +4,7 @@ import java.util.Scanner;
 //7*7棋盘
 class warship {
     int[] loc=new int[2];       //0是x坐标 1是y坐标
-    Integer ishorizontal;   //是否竖着，与前进后退方向有关
+    Integer ishorizontal;   //是否竖着，与前进后退方向
     void set(){
         loc[0]=3;
         loc[1]=3;
@@ -12,7 +12,14 @@ class warship {
         System.out.println("settled!");
     }
     void move(){
-        if(loc[ishorizontal]+1<=7&&loc[ishorizontal]-1>=0){
+        if(loc[ishorizontal]+1==6){
+            loc[ishorizontal]--;
+            return;
+        }
+        if(loc[ishorizontal]-1==0){
+            loc[ishorizontal]++;
+            return;
+        }
         int num=(int) (Math.random()*2);
         System.out.println(num);
         switch (num){
@@ -23,7 +30,6 @@ class warship {
         loc[ishorizontal]--;
         break;}
         System.out.println("moved!");
-    }
     }
     void getloc(){
         System.out.println(loc[0]+" "+loc[1]);
@@ -56,10 +62,6 @@ public class Main {
         //Map.draw();
     warship w=new warship();
     w.set();
-    w.getloc();
-    w.move();
-    w.getloc();
-    w.loc[0]++;
-    w.getloc();
+
     }
 }
